@@ -10,7 +10,7 @@ Stable Tag: 1.0.0
 License: GNU Version 2 or Any Later Version
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Provides Bitcoin/Altcoin Payment Gateway for WP eCommerce 3.8.10+. Accept Bitcoins, Litecoin, Dogecoin, Paycoin, Reddcoin, etc. Payments Online
+Provides Bitcoin/Altcoin Payment Gateway for WP eCommerce 3.8.10+ or higher. Accept Bitcoin, Litecoin, Dogecoin, Paycoin, etc Payments on Your Website
 
 
 
@@ -81,7 +81,7 @@ In the search field type "GoUrl WP eCommerce" and click Search Plugins. Once you
 
 == Changelog ==
 
-= 1.0.0 =    
+= 1.0.0 =       
 Initial Release
    
    

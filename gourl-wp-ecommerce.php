@@ -608,8 +608,8 @@ function gourlwpecommerce_gourlcallback ($user_id, $order_id, $payment_details, 
 	wpsc_update_purchase_log_details($order_id, array('transactid' => $trID));
 
 	
-	// WP eCommerce not use new updated order status, therefore need to refresh page manually                 
-	if (!in_array($arr["processed"], array(3,4,5)) && !stripos($_SERVER["REQUEST_URI"], "cryptobox.callback.php")) { header('Location: '.$_SERVER["REQUEST_URI"]); echo "<script>window.location.href = '".$_SERVER["REQUEST_URI"]."';</script>"; die; }
+	// WP eCommerce not use new updated order status, therefore need to refresh page manually            
+	if (in_array($status, array(3,4,5)) && !in_array($arr["processed"], array(3,4,5)) && !stripos($_SERVER["REQUEST_URI"], "cryptobox.callback.php")) { header('Location: '.$_SERVER["REQUEST_URI"]); echo "<script>window.location.href = '".$_SERVER["REQUEST_URI"]."';</script>"; die; }
 	
 	
 	return true;
