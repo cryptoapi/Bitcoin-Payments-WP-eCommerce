@@ -5,12 +5,13 @@ GoUrl WP eCommerce - Bitcoin Altcoin Payment Gateway Addon
 Version 1.0
 
 
-**Wordpress Plugin provides a Bitcoin Payment Gateway for WP eCommerce 3.8.10+ or higher.**
+**Wordpress Plugin provides a Bitcoin/Altcoins Payment Gateway for WP eCommerce 3.8.10+ or higher.**
 
-Accept Bitcoin, Litecoin, Dogecoin, Speedcoin, Paycoin, Darkcoin, Vertcoin, Reddcoin, Feathercoin, Vericoin, Potcoin on Website Online
+Accept Bitcoin, Litecoin, Speedcoin, Dogecoin, Paycoin, Darkcoin, Reddcoin, Potcoin, Feathercoin, Vertcoin, Vericoin on Website Online
 
 * Author URI: [https://gourl.io](https://gourl.io)
-* Plugin URI: [https://gourl.io/bitcoin-payments-wp-ecommerce.html](https://gourl.io/bitcoin-payments-wp-ecommerce.html)
+* Plugin Page: [https://gourl.io/bitcoin-payments-wp-ecommerce.html](https://gourl.io/bitcoin-payments-wp-ecommerce.html)
+* Wordpress Page: [https://wordpress.org/plugins/gourl-wp-ecommerce-bitcoin-altcoin-payment-gateway-addon](https://wordpress.org/plugins/gourl-wp-ecommerce-bitcoin-altcoin-payment-gateway-addon/)
 * Screenshots: [https://gourl.io/bitcoin-payments-wp-ecommerce.html#screenshot](https://gourl.io/bitcoin-payments-wp-ecommerce.html#screenshot)
 * Requires at least: Wordpress 3.5 and WP eCommerce 3.8.10
 * Tested up to: Wordpress 4.2 and WP eCommerce 3.9.1 
@@ -21,15 +22,15 @@ Accept Bitcoin, Litecoin, Dogecoin, Speedcoin, Paycoin, Darkcoin, Vertcoin, Redd
 **Wordpress Plugin for WP eCommerce Features -**
 
 * 100% Free Open Source Plugin on [Github.com](https://github.com/cryptoapi/Bitcoin-Payments-WP-eCommerce)
-* Provides a Payment Gateway for [WP eCommerce 3.8.10 or higher](https://wordpress.org/plugins/wp-e-commerce)
+* Provides a Cryptocurrency Payment Gateway for [WP eCommerce 3.8.10 or higher](https://wordpress.org/plugins/wp-e-commerce)
 * Accept Bitcoin and other cryptocurrency payments in WP eCommerce
 * No Monthly Fee, Transaction Fee from 0%
 * Product Prices in Bitcoin/Altcoins directly and sends the amount straight to your business wallet.
-* Product Prices in USD/EUR/GBP/etc. Google/Cryptsy Live Exchange Rates
+* Product Prices in USD/EUR/GBP/etc. Google/Bitstamp/Cryptsy Live Exchange Rates
 * Direct Integration on your website, no external payment pages opens (as other payment gateways offer)
 * You will see the bitcoin/altcoin payment statistics in one common table on your website. 
 * No Chargebacks, Global, Secure. All in automatic mode.
-* [Free Plugin Support](https://gourl.io/view/contact/Contact_Us.html) for You
+* [Free Tech Support](https://gourl.io/view/contact/Contact_Us.html) for You
 
 
 # ![WP eCommerce-Order-Page](https://gourl.io/images/wp-ecommerce/screenshot-2.png)
@@ -68,4 +69,5 @@ Plugin Options
 
   
 # ![WP eCommerce-Plugin-Options](https://gourl.io/images/wp-ecommerce/screenshot-1.png)
-        
+      
+ 
