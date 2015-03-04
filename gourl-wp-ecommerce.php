@@ -3,7 +3,7 @@
 Plugin Name: 		GoUrl WP eCommerce - Bitcoin Altcoin Payment Gateway Addon
 Plugin URI: 		https://gourl.io/bitcoin-payments-wp-ecommerce.html
 Description: 		Provides a <a href="https://gourl.io">GoUrl.io</a> Bitcoin/Altcoins Payment Gateway for <a href="https://wordpress.org/plugins/wp-e-commerce/">WP eCommerce 3.8.10+</a>. Support product prices in USD/EUR/etc and in Bitcoin/Altcoins directly; sends the amount straight to your business Bitcoin/Altcoin wallet. Convert your USD/EUR/etc prices to cryptocoins using Google/Bitstamp/Cryptsy Live Exchange Rates. Accept Bitcoin, Litecoin, Speedcoin, Dogecoin, Paycoin, Darkcoin, Reddcoin, Potcoin, Feathercoin, Vertcoin, Vericoin payments online. No Chargebacks, Global, Secure. All in automatic mode.
-Version: 			1.0.0
+Version: 			1.0.1
 Author: 			GoUrl.io
 Author URI: 		https://gourl.io
 License: 			GPLv2
@@ -12,33 +12,35 @@ GitHub Plugin URI: 	https://github.com/cryptoapi/Bitcoin-Payments-WP-eCommerce
 */
 
 
-if (!defined( 'ABSPATH' )) exit; // Exit if accessed directly in wordpress
+	if (!defined( 'ABSPATH' )) exit; // Exit if accessed directly in wordpress
 
 
-// WP eCommerce required
-if (!in_array('wp-e-commerce/wp-shopping-cart.php', get_option('active_plugins')) || 
-	!file_exists(WP_PLUGIN_DIR.'/wp-e-commerce/wpsc-includes/merchant.class.php')) return;
-
-
-define( 'GOURLWPSC', 'wpsc-gourl');
-
-
-add_filter( 'plugin_action_links', 				'gourl_wpsc_action_links', 10, 2 );
-add_action('wpsc_transaction_result_cart_item', array('wpsc_gourl_gateway', 'cryptocoin_payment'));
-add_action('wpsc_billing_details_bottom', 		array('wpsc_gourl_gateway', 'display_order_notes'));
-
+	// WP eCommerce required
+	$dir = "";
+	$arr = get_option('active_plugins');
+	foreach ($arr as $v) if (substr($v, -21) == "/wp-shopping-cart.php") $dir = substr($v, 0, -21);
+	if (!$dir || !file_exists(WP_PLUGIN_DIR.'/'.$dir.'/wpsc-includes/merchant.class.php')) return;
+	if (!class_exists('wpsc_merchant')) require_once(WP_PLUGIN_DIR.'/'.$dir.'/wpsc-includes/merchant.class.php');
+	
+	
+	DEFINE( 'GOURLWPSC', 'wpsc-gourl');
+	
+	
+	add_filter( 'plugin_action_links', 				'gourl_wpsc_action_links', 10, 2 );
+	add_action('wpsc_transaction_result_cart_item', array('wpsc_gourl_gateway', 'cryptocoin_payment'));
+	add_action('wpsc_billing_details_bottom', 		array('wpsc_gourl_gateway', 'display_order_notes'));
 
 
 
 /*
  *	1.
 */
-require_once WP_PLUGIN_DIR.'/wp-e-commerce/wpsc-includes/merchant.class.php';
-
-$nzshpcrt_gateways[$num] = array (
+$logo = get_option(GOURLWPSC.'logo');
+if (!$logo) $logo = 'bitcoin';
+$nzshpcrt_gateways["gourl"] = array (
 		'name'						=> __( 'GoUrl Bitcoin/Altcoins', GOURLWPSC ),
 		'api_version'				=> 2.0,
-		'image'						=> plugin_dir_url( __FILE__ ).'gourlpayments.png',
+		'image'						=> 'https://gourl.io/images/'.$logo.'/payments.png',
 		'internalname'				=> 'wpsc_gourl_gateway',
 		'class_name'				=> 'wpsc_gourl_gateway',
 		'has_recurring_billing'		=> true,
@@ -49,7 +51,7 @@ $nzshpcrt_gateways[$num] = array (
 		'payment_type'				=> 'cryptocoin',
 		'requirements'				=> array('php_version' => 5.2)
 );
-
+unset($logo);
 
 
 /*
@@ -103,11 +105,10 @@ class wpsc_gourl_gateway extends wpsc_merchant
 		$mainplugin_url = admin_url("plugin-install.php?tab=search&type=term&s=GoUrl+Bitcoin+Payment+Gateway+Downloads");
 			
 		
-		$description   = "<a href='https://gourl.io'><img style='float:left; margin-right:15px' src='".plugin_dir_url( __FILE__ )."gourlpayments.png'></a>";
-		$description  .= __( '<a target="_blank" href="https://gourl.io/bitcoin-payments-wp-ecommerce.html">Plugin Homepage &#187;</a>', GOURLWPSC ) . "<br>";
-		$description  .= __( '<a target="_blank" href="https://github.com/cryptoapi/Bitcoin-Payments-WP-eCommerce">Plugin on Github - 100% Free Open Source &#187;</a>', GOURLWPSC ) . "<br><br>";
-	
-	
+		$description	= "<a target='_blank' href='https://gourl.io/'><img border='0' style='float:left; margin-right:25px' src='https://gourl.io/images/gourlpayments.png'></a>";
+		$description	.= sprintf(__( '<a target="_blank" href="%s">Plugin Homepage</a> &#160;&amp;&#160; <a target="_blank" href="%s">screenshots &#187;</a>', GOURLWPSC ), "https://gourl.io/bitcoin-payments-wp-ecommerce.html", "https://gourl.io/bitcoin-payments-wp-ecommerce.html#screenshot") . "<br>";
+		$description	.= sprintf(__( '<a target="_blank" href="%s">Plugin on Github - 100%% Free Open Source &#187;</a>', GOURLWPSC ), "https://github.com/cryptoapi/Bitcoin-Payments-WP-eCommerce") . "<br><br>";
+		
 		if (class_exists('gourlclass') && defined('GOURL') && defined('GOURL_ADMIN') && is_object($gourl))
 		{
 			if (true === version_compare(GOURL_VERSION, '1.2.7', '<'))
@@ -139,12 +140,17 @@ class wpsc_gourl_gateway extends wpsc_merchant
 			$url3	= $url;
 			$text 	= __( '<b>Please install GoUrl Bitcoin Gateway WP Plugin &#187;</b>', GOURLWPSC );
 	
-			$description .= '<div class="error"><p>' .sprintf(__( '<b>You need to install GoUrl Bitcoin Gateway Main Plugin also. Go to - <a href="%s">Bitcoin Gateway plugin page</a></b> &#160; &#160; &#160; &#160; Information: &#160; <a href="https://gourl.io/bitcoin-wordpress-plugin.html">Plugin Homepage</a> &#160; &#160; &#160; <a href="https://wordpress.org/plugins/gourl-bitcoin-payment-gateway-paid-downloads-membership/">WordPress.org Plugin Page</a> ', GOURLWPSC ), $mainplugin_url).'</p></div>';
+			$description .= '<div class="error"><p>' .sprintf(__( '<b>You need to install GoUrl Bitcoin Gateway Main Plugin also. &#160; Go to - <a href="%s">Automatic installation</a> or <a href="https://gourl.io/bitcoin-wordpress-plugin.html">Manual</a></b>. &#160; &#160; &#160; &#160; Information: &#160; <a href="https://gourl.io/bitcoin-wordpress-plugin.html">Main Plugin Homepage</a> &#160; &#160; &#160; <a href="https://wordpress.org/plugins/gourl-bitcoin-payment-gateway-paid-downloads-membership/">WordPress.org Plugin Page</a> ', GOURLWPSC ), $mainplugin_url).'</p></div>';
 		}
 	
+		$description .= "<br/><b>" . __( 'Secure payments with virtual currency in Marketpress. &#160; <a target="_blank" href="https://bitcoin.org/">What is Bitcoin?</a>', GOURLWPSC ) . '</b><br/>';
 		$description .= __( 'If you use multiple stores/sites online, please create separate <a target="_blank" href="https://gourl.io/editrecord/coin_boxes/0">GoUrl Payment Box</a> (with unique payment box public/private keys) for each of your stores/websites. Do not use the same GoUrl Payment Box with the same public/private keys on your different websites/stores.', GOURLWPSC ).'<br/>';
 		$description .= sprintf(__( 'Accept %s payments online in WP eCommerce.', GOURLWPSC), ($coin_names?ucwords(implode(", ", $coin_names)):"Bitcoin, Litecoin, Speedcoin, Dogecoin, Paycoin, Darkcoin, Reddcoin, Potcoin, Feathercoin, Vertcoin, Vericoin")).'<br/>';
 	
+		
+		$logos = array('global' => __( 'GoUrl default logo - "Global Payments"', GOURLWPSC ));
+		foreach ($coin_names as $v) $logos[$v] = __( 'GoUrl logo with text - "'.ucfirst($v).' Payments"', GOURLWPSC );
+		
 		
 		// a
 		$tmp  = '<tr valign="top"><td colspan=2>';
@@ -153,6 +159,18 @@ class wpsc_gourl_gateway extends wpsc_merchant
 
 		
 		// b
+		$logo = get_option(GOURLWPSC.'logo');
+		if (!in_array($logo, $coin_names) && $logo != 'global') $logo = 'bitcoin';
+		$tmp .= '<tr valign="top">
+	            	<th><label for="'.GOURLWPSC.'logo">'.__( 'Logo', GOURLWPSC ).'</label></th>
+	            	<td><select name="wpsc_options['.GOURLWPSC.'logo]" id="wpsc_options['.GOURLWPSC.'logo]">';
+		foreach ($logos as $k => $v) $tmp .= "<option value='".$k."'".self::sel($k, $logo).">".$v."</option>";
+		$tmp .= "</select>";
+		$tmp .= '<p class="description">'.__("The logo that people see when making a purchase", GOURLWPSC)."</p>";
+		$tmp .= "</tr>";
+		
+		
+		// c
 		$defcoin = get_option(GOURLWPSC.'defcoin');
 		if (!in_array($defcoin, array_keys($payments))) $defcoin = current(array_keys($payments));
 		
@@ -165,7 +183,7 @@ class wpsc_gourl_gateway extends wpsc_merchant
 		$tmp .= "</tr>";
 	
 		
-		// c
+		// d
 		$deflang = get_option(GOURLWPSC.'deflang');
 		if (!in_array($deflang, array_keys($languages))) $deflang = current(array_keys($languages));
 			
@@ -178,7 +196,7 @@ class wpsc_gourl_gateway extends wpsc_merchant
 		$tmp .= "</tr>";
 	
 		
-		// d
+		// e
 		$emultiplier = str_replace("%", "", get_option(GOURLWPSC.'emultiplier'));
 		if (!$emultiplier || !is_numeric($emultiplier) || $emultiplier <= 0) $emultiplier = "1.00";
 	
@@ -189,7 +207,7 @@ class wpsc_gourl_gateway extends wpsc_merchant
 		$tmp .= "</tr>";
 
 		
-		// e
+		// f
 		$ostatus = get_option(GOURLWPSC.'ostatus');
 		if (!in_array($ostatus, array_keys($statuses))) $ostatus = 3; // Accepted Payment 
 		
@@ -202,7 +220,7 @@ class wpsc_gourl_gateway extends wpsc_merchant
 		$tmp .= "</tr>";
 			
 		
-		// f
+		// g
 		$ostatus2 = get_option(GOURLWPSC.'ostatus2');
 		if (!in_array($ostatus2, array_keys($statuses))) $ostatus2 = 3; // Accepted Payment
 		
@@ -215,7 +233,7 @@ class wpsc_gourl_gateway extends wpsc_merchant
 		$tmp .= "</tr>";
 			
 		
-		// g
+		// h
 		$iconwidth = str_replace("px", "", get_option(GOURLWPSC.'iconwidth'));
 		if (!$iconwidth || !is_numeric($iconwidth) || $iconwidth < 30 || $iconwidth > 250) $iconwidth = 60;
 		$iconwidth = $iconwidth . "px";
@@ -226,6 +244,13 @@ class wpsc_gourl_gateway extends wpsc_merchant
 		$tmp .= '<p class="description">'.__( 'Cryptocoin icons width in "Select Payment Method". Default 60px. Allowed: 30..250px', GOURLWPSC )."</p>";
 		$tmp .= "</tr>";
 	
+		
+		// i 
+		$tmp .= '<tr valign="top">
+	            	<th><label for="'.GOURLWPSC.'boxstyle">'.__( 'PaymentBox Style', GOURLWPSC ).'</label></th>
+	            	<td>'.sprintf(__( 'Payment Box <a target="_blank" href="%s">sizes</a> and border <a target="_blank" href="%s">shadow</a> you can change <a href="%s">here &#187;</a>', GOURLWPSC ), "https://gourl.io/images/global/sizes.png", "https://gourl.io/images/global/styles.png", $url."#gourlvericoinprivate_key")."</td>";
+		$tmp .= "</tr>";
+		
 		
 		return $tmp;
 	}
@@ -612,7 +637,7 @@ function gourlwpecommerce_gourlcallback ($user_id, $order_id, $payment_details, 
 	if (in_array($status, array(3,4,5)) && !in_array($arr["processed"], array(3,4,5)) && !stripos($_SERVER["REQUEST_URI"], "cryptobox.callback.php")) { header('Location: '.$_SERVER["REQUEST_URI"]); echo "<script>window.location.href = '".$_SERVER["REQUEST_URI"]."';</script>"; die; }
 	
 	
-	return true;
+	return true;   
 }
 
 
