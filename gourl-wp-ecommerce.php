@@ -143,7 +143,7 @@ class wpsc_gourl_gateway extends wpsc_merchant
 			$description .= '<div class="error"><p>' .sprintf(__( '<b>You need to install GoUrl Bitcoin Gateway Main Plugin also. &#160; Go to - <a href="%s">Automatic installation</a> or <a href="https://gourl.io/bitcoin-wordpress-plugin.html">Manual</a></b>. &#160; &#160; &#160; &#160; Information: &#160; <a href="https://gourl.io/bitcoin-wordpress-plugin.html">Main Plugin Homepage</a> &#160; &#160; &#160; <a href="https://wordpress.org/plugins/gourl-bitcoin-payment-gateway-paid-downloads-membership/">WordPress.org Plugin Page</a> ', GOURLWPSC ), $mainplugin_url).'</p></div>';
 		}
 	
-		$description .= "<br/><b>" . __( 'Secure payments with virtual currency in Marketpress. &#160; <a target="_blank" href="https://bitcoin.org/">What is Bitcoin?</a>', GOURLWPSC ) . '</b><br/>';
+		$description .= "<br/><b>" . __( 'Secure payments with virtual currency. &#160; <a target="_blank" href="https://bitcoin.org/">What is Bitcoin?</a>', GOURLWPSC ) . '</b><br/>';
 		$description .= __( 'If you use multiple stores/sites online, please create separate <a target="_blank" href="https://gourl.io/editrecord/coin_boxes/0">GoUrl Payment Box</a> (with unique payment box public/private keys) for each of your stores/websites. Do not use the same GoUrl Payment Box with the same public/private keys on your different websites/stores.', GOURLWPSC ).'<br/>';
 		$description .= sprintf(__( 'Accept %s payments online in WP eCommerce.', GOURLWPSC), ($coin_names?ucwords(implode(", ", $coin_names)):"Bitcoin, Litecoin, Speedcoin, Dogecoin, Paycoin, Darkcoin, Reddcoin, Potcoin, Feathercoin, Vertcoin, Vericoin")).'<br/>';
 	
@@ -633,11 +633,11 @@ function gourlwpecommerce_gourlcallback ($user_id, $order_id, $payment_details, 
 	wpsc_update_purchase_log_details($order_id, array('transactid' => $trID));
 
 	
-	// WP eCommerce not use new updated order status, therefore need to refresh page manually            
+	// WP eCommerce not use new updated order status, therefore need to refresh page manually
 	if (in_array($status, array(3,4,5)) && !in_array($arr["processed"], array(3,4,5)) && !stripos($_SERVER["REQUEST_URI"], "cryptobox.callback.php")) { header('Location: '.$_SERVER["REQUEST_URI"]); echo "<script>window.location.href = '".$_SERVER["REQUEST_URI"]."';</script>"; die; }
 	
 	
-	return true;   
+	return true;
 }
 
 
