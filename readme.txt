@@ -3,10 +3,10 @@ Contributors: gourl, GoUrl.io
 Plugin Name: GoUrl WP eCommerce - Bitcoin Altcoin Payment Gateway Addon
 Plugin URI: https://gourl.io/bitcoin-payments-wp-ecommerce.html
 Author URI: https://gourl.io 
-Tags: wp ecommerce, wpecommerce, wp e-commerce, bitcoin, bitcoins, bitcoin payment, bitcoin payments, bitcoin escrow, paypal, gourl, cryptocurrency, crypto currency, osCommerce, wp ecommerce payment gateway, btc, coinbase, wp ecommerce, bitpay, shopping cart, ecommerce, commerce, eshop, payment gateway, payment plugin, payment, e-commerce, ecommerce, fulfillment, wp e-commerce, credit, accept bitcoin, bitcoin payments, bitcoin plugin, bitcoin wordpress plugin, bitcoin store, BitPay, cart, checkout, e-commerce, online store, payment, payment gateway, authorize, cart, e-commerce, ecommerce, paypal, shipping, shop, stock control, tax, wp e-commerce, sell, shortcode, litecoin, dogecoin, speedcoin, paycoin, xpy, darkcoin, vertcoin, reddcoin, feathercoin, vericoin, potcoin
+Tags: wp ecommerce, wpecommerce, wp e-commerce, bitcoin, bitcoins, bitcoin payment, bitcoin payments, bitcoin escrow, paypal, gourl, cryptocurrency, crypto currency, osCommerce, wp ecommerce payment gateway, btc, coinbase, wp ecommerce, bitpay, shopping cart, ecommerce, commerce, eshop, payment gateway, payment plugin, payment, e-commerce, ecommerce, fulfillment, wp e-commerce, credit, accept bitcoin, bitcoin payments, bitcoin plugin, bitcoin wordpress plugin, bitcoin store, BitPay, cart, checkout, e-commerce, online store, payment, payment gateway, authorize, cart, e-commerce, ecommerce, paypal, shipping, shop, stock control, tax, wp e-commerce, sell, shortcode, litecoin, dogecoin, speedcoin, paycoin, xpy, dash, vertcoin, reddcoin, feathercoin, vericoin, potcoin, peercoin
 Requires at least: 3.5
 Tested up to: 4.2
-Stable Tag: 1.0.1
+Stable Tag: 1.1.0
 License: GNU Version 2 or Any Later Version
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,7 +23,7 @@ Wordpress Plugin for WP eCommerce Features -
 
 * 100% Free Open Source Plugin on [Github.com](https://github.com/cryptoapi/Bitcoin-Payments-WP-eCommerce)
 * Provides a Cryptocurrency Payment Gateway for [WP eCommerce 3.8.10 or higher](https://wordpress.org/plugins/wp-e-commerce/)
-* Accept Bitcoin, Litecoin, Speedcoin, Dogecoin, Paycoin, Darkcoin, Reddcoin, Potcoin, Feathercoin, Vertcoin, Vericoin payments in WP eCommerce
+* Accept Bitcoin, Litecoin, Paycoin, Dogecoin, Dash, Speedcoin, Reddcoin, Potcoin, Feathercoin, Vertcoin, Vericoin, Peercoin payments in WP eCommerce
 * No Monthly Fee, Transaction Fee from 0%
 * Product Prices in Bitcoin/Altcoins directly and sends the amount straight to your business wallet.
 * Product Prices in USD/EUR/GBP/etc. Google/Bitstamp/Cryptsy Live Exchange Rates
@@ -31,8 +31,6 @@ Wordpress Plugin for WP eCommerce Features -
 * You will see the bitcoin/altcoin payment statistics in one common table on your website. 
 * No Chargebacks, Global, Secure. All in automatic mode.
 * [Free Tech Support](https://gourl.io/view/contact/Contact_Us.html) for You
-
-Please note you need to install also - [GoUrl Wordpress Plugin with Payment Gateway](https://wordpress.org/plugins/gourl-bitcoin-payment-gateway-paid-downloads-membership/)
 
 
 Plugin Page: [https://gourl.io/bitcoin-payments-wp-ecommerce.html](https://gourl.io/bitcoin-payments-wp-ecommerce.html)
@@ -46,15 +44,21 @@ Github: [https://github.com/cryptoapi/Bitcoin-Payments-WP-eCommerce](https://git
 
 == Installation ==
 
-= Minimum Requirements =
 
-* WP eCommerce 3.8.10 or higher version
+= Requirements =
+
+You need to install also -
+
+* [WP eCommerce Plugin](https://wordpress.org/plugins/wp-e-commerce/)
+* [GoUrl Main Wordpress Gateway Plugin](https://wordpress.org/plugins/gourl-bitcoin-payment-gateway-paid-downloads-membership/)
+
 
 = Automatic installation =
 
 Automatic installation is the easiest option as WordPress handles the file transfers itself and you don't need to leave your web browser. To do an automatic install of GoUrl Bitcoin/Altcoin Gateway for WP eCommerce, log in to your WordPress dashboard, navigate to the Plugins menu and click Add New.
 
 In the search field type "GoUrl WP eCommerce" and click Search Plugins. Once you've found our plugin you can view details about it such as the the rating and description. Most importantly, of course, you can install it by simply clicking Install Now.
+
 
 = Manual Installation =
 
@@ -81,10 +85,13 @@ In the search field type "GoUrl WP eCommerce" and click Search Plugins. Once you
 
 == Changelog ==
 
+= 1.1.0 =       
+Added Peercoin 
+Spanish payment box localisation
+
 = 1.0.1 =       
 Several new enhancements
 
 = 1.0.0 =       
 Initial Release
-   
-              
+ 
