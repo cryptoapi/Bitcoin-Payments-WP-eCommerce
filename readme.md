@@ -2,20 +2,20 @@
 GoUrl WP eCommerce - Bitcoin Altcoin Payment Gateway Addon
 -----------------------------------------------------------
 
-Version 1.1.0
+Version 1.1.1
 
 
 **Wordpress Plugin provides a Bitcoin/Altcoin Payment Gateway for WP eCommerce 3.8.10+ or higher.**
 
-Accept Bitcoin, Litecoin, Paycoin, Dogecoin, Dash, Speedcoin, Reddcoin, Potcoin, Feathercoin, Vertcoin, Vericoin, Peercoin on Website Online
+Accept Bitcoin, Litecoin, Paycoin, Dogecoin, Dash, Speedcoin, Reddcoin, Potcoin, Feathercoin, Vertcoin, Vericoin, Peercoin, MonetaryUnit on Website Online
 
 * Author URI: [https://gourl.io](https://gourl.io)
 * Plugin Page: [https://gourl.io/bitcoin-payments-wp-ecommerce.html](https://gourl.io/bitcoin-payments-wp-ecommerce.html)
 * Wordpress Page: [https://wordpress.org/plugins/gourl-wp-ecommerce-bitcoin-altcoin-payment-gateway-addon](https://wordpress.org/plugins/gourl-wp-ecommerce-bitcoin-altcoin-payment-gateway-addon/)
 * Screenshots: [https://gourl.io/bitcoin-payments-wp-ecommerce.html#screenshot](https://gourl.io/bitcoin-payments-wp-ecommerce.html#screenshot)
 * Requires at least: Wordpress 3.5 and WP eCommerce 3.8.10
-* Tested up to: Wordpress 4.2 and WP eCommerce 3.9.1 
-* Stable Tag: 1.0
+* Tested up to: Wordpress 4.3 and WP eCommerce 3.9.1 
+* Stable Tag: 1.1.1
 * License: GNU Version 2 or Any Later Version
 
 
@@ -69,4 +69,5 @@ Plugin Options
 
   
 # ![WP eCommerce-Plugin-Options](https://gourl.io/images/wp-ecommerce/screenshot-1.png)
-
+  
+  

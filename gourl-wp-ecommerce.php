@@ -2,8 +2,8 @@
 /*
 Plugin Name: 		GoUrl WP eCommerce - Bitcoin Altcoin Payment Gateway Addon
 Plugin URI: 		https://gourl.io/bitcoin-payments-wp-ecommerce.html
-Description: 		Provides a <a href="https://gourl.io">GoUrl.io</a> Bitcoin/Altcoin Payment Gateway for <a href="https://wordpress.org/plugins/wp-e-commerce/">WP eCommerce 3.8.10+</a>. Support product prices in USD/EUR/etc and in Bitcoin/Altcoins directly; sends the amount straight to your business Bitcoin/Altcoin wallet. Convert your USD/EUR/etc prices to cryptocoins using Google/Bitstamp/Cryptsy Live Exchange Rates. Accept Bitcoin, Litecoin, Paycoin, Dogecoin, Dash, Speedcoin, Reddcoin, Potcoin, Feathercoin, Vertcoin, Vericoin, Peercoin payments online. No Chargebacks, Global, Secure. All in automatic mode.
-Version: 			1.1.0
+Description: 		Provides a <a href="https://gourl.io">GoUrl.io</a> Bitcoin/Altcoin Payment Gateway for <a href="https://wordpress.org/plugins/wp-e-commerce/">WP eCommerce 3.8.10+</a>. Support product prices in USD/EUR/etc and in Bitcoin/Altcoins directly; sends the amount straight to your business Bitcoin/Altcoin wallet. Convert your USD/EUR/etc prices to cryptocoins using Google/Bitstamp/Cryptsy Live Exchange Rates. Accept Bitcoin, Litecoin, Paycoin, Dogecoin, Dash, Speedcoin, Reddcoin, Potcoin, Feathercoin, Vertcoin, Vericoin, Peercoin, MonetaryUnit payments online. No Chargebacks, Global, Secure. All in automatic mode.
+Version: 			1.1.1
 Author: 			GoUrl.io
 Author URI: 		https://gourl.io
 License: 			GPLv2
@@ -111,9 +111,9 @@ class wpsc_gourl_gateway extends wpsc_merchant
 		
 		if (class_exists('gourlclass') && defined('GOURL') && defined('GOURL_ADMIN') && is_object($gourl))
 		{
-			if (true === version_compare(GOURL_VERSION, '1.3', '<'))
+			if (true === version_compare(GOURL_VERSION, '1.3.3', '<'))
 			{
-				$description .= '<div class="error"><p>' .sprintf(__( '<b>Your GoUrl Bitcoin Gateway <a href="%s">Main Plugin</a> version is too old. Requires 1.3 or higher version. Please <a href="%s">update</a> to latest version.</b>  &#160; &#160; &#160; &#160; Information: &#160; <a href="https://gourl.io/bitcoin-wordpress-plugin.html">Plugin Homepage</a> &#160; &#160; &#160; <a href="https://wordpress.org/plugins/gourl-bitcoin-payment-gateway-paid-downloads-membership/">WordPress.org Plugin Page</a>', GOURLWPSC ), GOURL_ADMIN.GOURL, $mainplugin_url).'</p></div>';
+				$description .= '<div class="error"><p>' .sprintf(__( '<b>Your GoUrl Bitcoin Gateway <a href="%s">Main Plugin</a> version is too old. Requires 1.3.3 or higher version. Please <a href="%s">update</a> to latest version.</b>  &#160; &#160; &#160; &#160; Information: &#160; <a href="https://gourl.io/bitcoin-wordpress-plugin.html">Plugin Homepage</a> &#160; &#160; &#160; <a href="https://wordpress.org/plugins/gourl-bitcoin-payment-gateway-paid-downloads-membership/">WordPress.org Plugin Page</a>', GOURLWPSC ), GOURL_ADMIN.GOURL, $mainplugin_url).'</p></div>';
 			}
 			elseif (true === version_compare(WPSC_VERSION, '3.8.10', '<'))
 			{
@@ -145,7 +145,7 @@ class wpsc_gourl_gateway extends wpsc_merchant
 	
 		$description .= "<br/><b>" . __( 'Secure payments with virtual currency. &#160; <a target="_blank" href="https://bitcoin.org/">What is Bitcoin?</a>', GOURLWPSC ) . '</b><br/>';
 		$description .= __( 'If you use multiple stores/sites online, please create separate <a target="_blank" href="https://gourl.io/editrecord/coin_boxes/0">GoUrl Payment Box</a> (with unique payment box public/private keys) for each of your stores/websites. Do not use the same GoUrl Payment Box with the same public/private keys on your different websites/stores.', GOURLWPSC ).'<br/>';
-		$description .= sprintf(__( 'Accept %s payments online in WP eCommerce.', GOURLWPSC), ($coin_names?ucwords(implode(", ", $coin_names)):"Bitcoin, Litecoin, Paycoin, Dogecoin, Dash, Speedcoin, Reddcoin, Potcoin, Feathercoin, Vertcoin, Vericoin, Peercoin")).'<br/>';
+		$description .= sprintf(__( 'Accept %s payments online in WP eCommerce.', GOURLWPSC), ($coin_names?ucwords(implode(", ", $coin_names)):"Bitcoin, Litecoin, Paycoin, Dogecoin, Dash, Speedcoin, Reddcoin, Potcoin, Feathercoin, Vertcoin, Vericoin, Peercoin, MonetaryUnit")).'<br/>';
 	
 		
 		$logos = array('global' => __( 'GoUrl default logo - "Global Payments"', GOURLWPSC ));
@@ -248,7 +248,7 @@ class wpsc_gourl_gateway extends wpsc_merchant
 		// i 
 		$tmp .= '<tr valign="top">
 	            	<th><label for="'.GOURLWPSC.'boxstyle">'.__( 'PaymentBox Style', GOURLWPSC ).'</label></th>
-	            	<td>'.sprintf(__( 'Payment Box <a target="_blank" href="%s">sizes</a> and border <a target="_blank" href="%s">shadow</a> you can change <a href="%s">here &#187;</a>', GOURLWPSC ), "https://gourl.io/images/global/sizes.png", "https://gourl.io/images/global/styles.png", $url."#gourlvericoinprivate_key")."</td>";
+	            	<td>'.sprintf(__( 'Payment Box <a target="_blank" href="%s">sizes</a> and border <a target="_blank" href="%s">shadow</a> you can change <a href="%s">here &#187;</a>', GOURLWPSC ), "https://gourl.io/images/global/sizes.png", "https://gourl.io/images/global/styles.png", $url."#gourlmonetaryunitprivate_key")."</td>";
 		$tmp .= "</tr>";
 		
 		
@@ -285,9 +285,9 @@ class wpsc_gourl_gateway extends wpsc_merchant
 		$mainplugin_url = admin_url("plugin-install.php?tab=search&type=term&s=GoUrl+Bitcoin+Payment+Gateway+Downloads");
 	
 		// Re-test
-		if (!(class_exists('gourlclass') && defined('GOURL') && defined('GOURL_ADMIN') && is_object($gourl) && true === version_compare(GOURL_VERSION, '1.3', '>=')))
+		if (!(class_exists('gourlclass') && defined('GOURL') && defined('GOURL_ADMIN') && is_object($gourl) && true === version_compare(GOURL_VERSION, '1.3.3', '>=')))
 		{
-			$this->set_error_message('<div style="border:1px solid #eee;margin:20px 10px;padding:10px">'.sprintf(__( '<b>Error!</b> Please try a different payment method. Admin need to install and activate GoUrl Bitcoin Gateway Main Plugin 1.3+. <a href="%s">Bitcoin Gateway plugin page</a><br>Information: &#160; <a href="https://gourl.io/bitcoin-wordpress-plugin.html">Plugin Homepage</a> &#160; &#160; &#160; <a href="https://wordpress.org/plugins/gourl-bitcoin-payment-gateway-paid-downloads-membership/">WordPress.org Plugin Page</a> ', GOURLWPSC ), $mainplugin_url).'</p></div>');
+			$this->set_error_message('<div style="border:1px solid #eee;margin:20px 10px;padding:10px">'.sprintf(__( '<b>Error!</b> Please try a different payment method. Admin need to install and activate GoUrl Bitcoin Gateway Main Plugin 1.3.3+. <a href="%s">Bitcoin Gateway plugin page</a><br>Information: &#160; <a href="https://gourl.io/bitcoin-wordpress-plugin.html">Plugin Homepage</a> &#160; &#160; &#160; <a href="https://wordpress.org/plugins/gourl-bitcoin-payment-gateway-paid-downloads-membership/">WordPress.org Plugin Page</a> ', GOURLWPSC ), $mainplugin_url).'</p></div>');
 			$this->set_purchase_processed_by_purchid(1); // WPSC_Purchase_Log::INCOMPLETE_SALE
 			return;
 		}
@@ -378,7 +378,7 @@ class wpsc_gourl_gateway extends wpsc_merchant
 			echo '<h2>' . __( 'Information', GOURLWPSC ) . '</h2>' . PHP_EOL;
 			echo "<div style='border:1px solid #eee;margin:20px 10px;padding:10px'>".__( "Please try a different payment method. Admin need to install and activate wordpress plugin 'GoUrl Bitcoin Gateway' (https://gourl.io/bitcoin-wordpress-plugin.html) to accept Bitcoin/Altcoin Payments online", GOURLWPSC )."</div>";
 		}
-		elseif (!$payments || !$defcoin || true === version_compare(WPSC_VERSION, '3.8.10', '<') || true === version_compare(GOURL_VERSION, '1.3', '<') ||
+		elseif (!$payments || !$defcoin || true === version_compare(WPSC_VERSION, '3.8.10', '<') || true === version_compare(GOURL_VERSION, '1.3.3', '<') ||
 				(array_key_exists($order_currency, $coin_names) && !array_key_exists($order_currency, $payments)))
 		{
 			echo '<h2>' . __( 'Information', GOURLWPSC ) . '</h2>' . PHP_EOL;
@@ -486,7 +486,8 @@ class wpsc_gourl_gateway extends wpsc_merchant
 				(0, 'Cryptocurrency', 'D1', 'Feathercoin', '', '', 'FTC', '0', '0','world','1'),
 				(0, 'Cryptocurrency', 'C8', 'Vertcoin', '', '', 'VTC', '0', '0','world','1'),
 				(0, 'Cryptocurrency', 'D2', 'Vericoin', '', '', 'VRC', '0', '0','world','1'),
-				(0, 'Cryptocurrency', 'D4', 'Peercoin', '', '', 'PPC', '0', '0','world','1')";
+				(0, 'Cryptocurrency', 'D4', 'Peercoin', '', '', 'PPC', '0', '0','world','1'),
+				(0, 'Cryptocurrency', 'D5', 'MonetaryUnit', '', '', 'MUE', '0', '0','world','1')";
 	
 			$wpdb->query($sql);
 		}
@@ -639,7 +640,7 @@ function gourlwpecommerce_gourlcallback ($user_id, $order_id, $payment_details, 
 	if (in_array($status, array(3,4,5)) && !in_array($arr["processed"], array(3,4,5)) && !stripos($_SERVER["REQUEST_URI"], "cryptobox.callback.php")) { header('Location: '.$_SERVER["REQUEST_URI"]); echo "<script>window.location.href = '".$_SERVER["REQUEST_URI"]."';</script>"; die; }
 	
 	
-	return true; 
+	return true;  
 }
 
 
