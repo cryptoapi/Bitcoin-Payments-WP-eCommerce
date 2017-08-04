@@ -3,14 +3,14 @@ Contributors: gourl, GoUrl.io
 Plugin Name: GoUrl WP eCommerce - Bitcoin Altcoin Payment Gateway Addon
 Plugin URI: https://gourl.io/bitcoin-payments-wp-ecommerce.html
 Author URI: https://gourl.io 
-Tags: wp ecommerce, wpecommerce, wp e-commerce, bitcoin, bitcoins, bitcoin payment, bitcoin payments, bitcoin escrow, paypal, gourl, cryptocurrency, crypto currency, osCommerce, wp ecommerce payment gateway, btc, coinbase, wp ecommerce, bitpay, shopping cart, ecommerce, commerce, eshop, payment gateway, payment plugin, payment, e-commerce, ecommerce, fulfillment, wp e-commerce, credit, accept bitcoin, bitcoin payments, bitcoin plugin, bitcoin wordpress plugin, bitcoin store, BitPay, cart, checkout, e-commerce, online store, payment, payment gateway, authorize, cart, e-commerce, ecommerce, paypal, shipping, shop, stock control, tax, wp e-commerce, sell, shortcode, litecoin, dogecoin, darkcoin, dash, speedcoin, vertcoin, reddcoin, feathercoin, vericoin, potcoin, paycoin, monetaryunit, peercoin
+Tags: wp ecommerce, wpecommerce, wp e-commerce, bitcoin, bitcoincash, bitcoin cash, bitcoins, bitcoin payment, bitcoin payments, bitcoin escrow, paypal, gourl, cryptocurrency, crypto currency, osCommerce, wp ecommerce payment gateway, btc, coinbase, wp ecommerce, bitpay, shopping cart, ecommerce, commerce, eshop, payment gateway, payment plugin, payment, e-commerce, ecommerce, fulfillment, wp e-commerce, credit, accept bitcoin, bitcoin payments, bitcoin plugin, bitcoin wordpress plugin, bitcoin store, BitPay, cart, checkout, e-commerce, online store, payment, payment gateway, authorize, cart, e-commerce, ecommerce, paypal, shipping, shop, stock control, tax, wp e-commerce, sell, shortcode, litecoin, dogecoin, dash, speedcoin, vertcoin, reddcoin, feathercoin, potcoin, monetaryunit, peercoin
 Requires at least: 3.5
-Tested up to: 4.3
-Stable Tag: 1.1.1
+Tested up to: 4.9
+Stable Tag: 1.1.2
 License: GNU Version 2 or Any Later Version
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Provides Bitcoin/Altcoin Payment Gateway for WP eCommerce 3.8.10+ or higher. Accept Bitcoin, Litecoin, Dogecoin, Paycoin, etc Payments on Your Website
+Provides Bitcoin/Altcoin Payment Gateway for WP eCommerce 3.8.10+ or higher. Accept Bitcoin, Bitcoin Cash, Litecoin, Dogecoin, Dash, etc Payments on Your Website
 
 
 
@@ -23,10 +23,10 @@ Wordpress Plugin for WP eCommerce Features -
 
 * 100% Free Open Source Plugin on [Github.com](https://github.com/cryptoapi/Bitcoin-Payments-WP-eCommerce)
 * Provides a Cryptocurrency Payment Gateway for [WP eCommerce 3.8.10 or higher](https://wordpress.org/plugins/wp-e-commerce/)
-* Accept Bitcoin, Litecoin, Paycoin, Dogecoin, Dash, Speedcoin, Reddcoin, Potcoin, Feathercoin, Vertcoin, Vericoin, Peercoin, MonetaryUnit payments in WP eCommerce
+* Accept Bitcoin, BitcoinCash, Litecoin, Dash, Dogecoin, Speedcoin, Reddcoin, Potcoin, Feathercoin, Vertcoin, Peercoin, MonetaryUnit payments in WP eCommerce
 * No Monthly Fee, Transaction Fee from 0%
 * Product Prices in Bitcoin/Altcoins directly and sends the amount straight to your business wallet.
-* Product Prices in USD/EUR/GBP/etc. Google/Bitstamp/Cryptsy Live Exchange Rates
+* Product Prices in USD/EUR/GBP/etc. Google/Bitstamp/Poloniex Live Exchange Rates
 * Direct Integration on your website, no external payment pages opens (as other payment gateways offer)
 * You will see the bitcoin/altcoin payment statistics in one common table on your website. 
 * No Chargebacks, Global, Secure. All in automatic mode.
@@ -84,6 +84,9 @@ In the search field type "GoUrl WP eCommerce" and click Search Plugins. Once you
 
 
 == Changelog ==
+
+= 1.1.2 = 
+Minor updates
 
 = 1.1.1 =
 Add MonetaryUnit [MUE] cryptocurrency

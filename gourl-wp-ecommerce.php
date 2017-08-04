@@ -2,8 +2,8 @@
 /*
 Plugin Name: 		GoUrl WP eCommerce - Bitcoin Altcoin Payment Gateway Addon
 Plugin URI: 		https://gourl.io/bitcoin-payments-wp-ecommerce.html
-Description: 		Provides a <a href="https://gourl.io">GoUrl.io</a> Bitcoin/Altcoin Payment Gateway for <a href="https://wordpress.org/plugins/wp-e-commerce/">WP eCommerce 3.8.10+</a>. Support product prices in USD/EUR/etc and in Bitcoin/Altcoins directly; sends the amount straight to your business Bitcoin/Altcoin wallet. Convert your USD/EUR/etc prices to cryptocoins using Google/Bitstamp/Cryptsy Live Exchange Rates. Accept Bitcoin, Litecoin, Paycoin, Dogecoin, Dash, Speedcoin, Reddcoin, Potcoin, Feathercoin, Vertcoin, Vericoin, Peercoin, MonetaryUnit payments online. No Chargebacks, Global, Secure. All in automatic mode.
-Version: 			1.1.1
+Description: 		Provides a <a href="https://gourl.io">GoUrl.io</a> Bitcoin/Altcoin Payment Gateway for <a href="https://wordpress.org/plugins/wp-e-commerce/">WP eCommerce 3.8.10+</a>. Support product prices in USD/EUR/etc and in Bitcoin/Altcoins directly; sends the amount straight to your business Bitcoin/Altcoin wallet. Convert your USD/EUR/etc prices to cryptocoins using Google/Bitstamp/Poloniex Live Exchange Rates. Accept Bitcoin, BitcoinCash, Litecoin, Dash, Dogecoin, Speedcoin, Reddcoin, Potcoin, Feathercoin, Vertcoin, Peercoin, MonetaryUnit payments online. No Chargebacks, Global, Secure. All in automatic mode.
+Version: 			1.1.2
 Author: 			GoUrl.io
 Author URI: 		https://gourl.io
 License: 			GPLv2
@@ -145,7 +145,7 @@ class wpsc_gourl_gateway extends wpsc_merchant
 	
 		$description .= "<br/><b>" . __( 'Secure payments with virtual currency. &#160; <a target="_blank" href="https://bitcoin.org/">What is Bitcoin?</a>', GOURLWPSC ) . '</b><br/>';
 		$description .= __( 'If you use multiple stores/sites online, please create separate <a target="_blank" href="https://gourl.io/editrecord/coin_boxes/0">GoUrl Payment Box</a> (with unique payment box public/private keys) for each of your stores/websites. Do not use the same GoUrl Payment Box with the same public/private keys on your different websites/stores.', GOURLWPSC ).'<br/>';
-		$description .= sprintf(__( 'Accept %s payments online in WP eCommerce.', GOURLWPSC), ($coin_names?ucwords(implode(", ", $coin_names)):"Bitcoin, Litecoin, Paycoin, Dogecoin, Dash, Speedcoin, Reddcoin, Potcoin, Feathercoin, Vertcoin, Vericoin, Peercoin, MonetaryUnit")).'<br/>';
+		$description .= sprintf(__( 'Accept %s payments online in WP eCommerce.', GOURLWPSC), ($coin_names?ucwords(implode(", ", $coin_names)):"Bitcoin, BitcoinCash, Litecoin, Dash, Dogecoin, Speedcoin, Reddcoin, Potcoin, Feathercoin, Vertcoin, Peercoin, MonetaryUnit")).'<br/>';
 	
 		
 		$logos = array('global' => __( 'GoUrl default logo - "Global Payments"', GOURLWPSC ));
@@ -477,7 +477,6 @@ class wpsc_gourl_gateway extends wpsc_merchant
 			$sql = "INSERT INTO `".WPSC_TABLE_CURRENCY_LIST."` VALUES
 				(0, 'Cryptocurrency', 'C1', 'Bitcoin', '', '', 'BTC', '0', '0','world','1'),
 				(0, 'Cryptocurrency', 'C2', 'Litecoin', '', '', 'LTC', '0', '0','world','1'),
-				(0, 'Cryptocurrency', 'C6', 'Paycoin', '', '', 'XPY', '0', '0','world','1'),
 				(0, 'Cryptocurrency', 'C3', 'Dogecoin', '', '', 'DOG', '0', '0','world','1'),
 				(0, 'Cryptocurrency', 'C7', 'Dash', '', '', 'DASH', '0', '0','world','1'),
 				(0, 'Cryptocurrency', 'C5', 'Speedcoin', '', '', 'SPD', '0', '0','world','1'),
@@ -485,9 +484,9 @@ class wpsc_gourl_gateway extends wpsc_merchant
 				(0, 'Cryptocurrency', 'D3', 'Potcoin', '', '', 'POT', '0', '0','world','1'),
 				(0, 'Cryptocurrency', 'D1', 'Feathercoin', '', '', 'FTC', '0', '0','world','1'),
 				(0, 'Cryptocurrency', 'C8', 'Vertcoin', '', '', 'VTC', '0', '0','world','1'),
-				(0, 'Cryptocurrency', 'D2', 'Vericoin', '', '', 'VRC', '0', '0','world','1'),
 				(0, 'Cryptocurrency', 'D4', 'Peercoin', '', '', 'PPC', '0', '0','world','1'),
-				(0, 'Cryptocurrency', 'D5', 'MonetaryUnit', '', '', 'MUE', '0', '0','world','1')";
+				(0, 'Cryptocurrency', 'D5', 'MonetaryUnit', '', '', 'MUE', '0', '0','world','1'),
+				(0, 'Cryptocurrency', 'D6', 'Bitcoin Cash', '', '', 'BCH', '0', '0','world','1')";
 	
 			$wpdb->query($sql);
 		}
@@ -640,7 +639,7 @@ function gourlwpecommerce_gourlcallback ($user_id, $order_id, $payment_details, 
 	if (in_array($status, array(3,4,5)) && !in_array($arr["processed"], array(3,4,5)) && !stripos($_SERVER["REQUEST_URI"], "cryptobox.callback.php")) { header('Location: '.$_SERVER["REQUEST_URI"]); echo "<script>window.location.href = '".$_SERVER["REQUEST_URI"]."';</script>"; die; }
 	
 	
-	return true;  
+	return true; 
 }
 
 
